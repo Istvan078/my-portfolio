@@ -1,0 +1,30 @@
+{
+  "header-1": "Istvan Kalmar – Front-end Developer",
+  "about-me": "About Me",
+  "projects": "Projects",
+  "skills": "Skills",
+  "studies": "Studies",
+  "contact": "Contact",
+  "about-me-text": "Fast and clean Angular-based web apps – focusing on UX and performance.",
+  "works": "Works",
+  "download-cv": "Download CV",
+  "open-to-work": "Open to Work",
+  "links": "Links",
+  "ux-performance": "UX & Performance",
+  "clean-ui": "Clean UI",
+  "projects-header": "Projects",
+  "project-1": {
+    "header": "Flame Chat",
+    "intro": "A real-time chat application built with Angular and Firebase, featuring user authentication, private messaging.",
+    "li-1": "Real-time messaging with Firebase Realtime Database",
+    "li-2": "User authentication using Firebase Authentication",
+    "li-3": "Responsive design for seamless experience across devices",
+    "li-4": "Private messaging functionality, voice message included",
+    "li-5": "Push notifications for new messages, ensuring users stay updated",
+    "li-6": "Creating private and public posts with image upload feature",
+    "li-7": "Sharing posts in other users profile and reacting to them",
+    "tech-stack": "Tech Stack: Angular, Firebase, HTML5, SCSS, TypeScript"
+  },
+  "project-2": "Project 2",
+  "project-3": "Project 3"
+}

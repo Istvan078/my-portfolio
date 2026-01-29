@@ -1,0 +1,40 @@
+@use "./base" as *;
+
+.header {
+  grid-row: 1 / 2;
+  grid-column: center-start / center-end;
+}
+
+.content {
+  grid-column: full-start / full-end;
+  display: grid;
+  align-content: start;
+
+  @media only screen and (max-width: $bp-small) {
+    grid-row: 1 / 2;
+  }
+  @media only screen and (max-width: $bp-smallest) {
+    grid-row: 2 / 3;
+  }
+}
+
+.projects {
+  position: relative;
+  grid-column: full-start / full-end;
+  grid-row: 3 / 4;
+  display: grid;
+  grid-template-rows:
+    min-content max-content
+    min-content;
+
+  @media only screen and (max-width: $bp-small) {
+    margin-top: 5rem;
+  }
+}
+
+.footer {
+  font-size: 1.8rem;
+  justify-self: center;
+  grid-column: center-start / center-end;
+  grid-row: 4 / 5;
+}

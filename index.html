@@ -1,63 +1,309 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" defer src="environments.js"></script>
-    <script defer src="script.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,400i|Nunito:300,300i"
+      rel="stylesheet"
+    />
+    <title>Istvan Kalmar's Portfolio</title>
+    <!-- <link rel="icon" href="assets/favicon.ico" /> -->
+    <link rel="stylesheet" href="./styles/global.scss" />
+    <script type="module" src="script.js"></script>
   </head>
-  <body>
-    <div class="bg-img-container"></div>
-    <div class="hamburger-menu">
-      <div class="line"></div>
-      <div class="line"></div>
-      <div class="line"></div>
-    </div>
-    <header class="t-center header"><h1>Portfólióm</h1></header>
-    <nav class="navbar">
-      <ul class="nav-items">
-        <li data-content="1">Bemutatkozás</li>
-        <li data-content="2">Munkáim</li>
-        <li data-content="3">Végzettségeim</li>
-        <!-- <li data-content="4">Rólam</li> -->
-      </ul>
-    </nav>
-    <div id="content-container" class="content-container">
-      <!-- <div data-content="1" id="content-container" class="content-container"> -->
-        <div class="content-div">
-          <h2>Üdvözöllek az oldalamon!</h2>
-          <p class="p-text-shadow">
-            Kalmár István vagyok, front-end fejlesztő. Küldetésemnek érzem, hogy
-            olyan felhasználói élményt nyújtsak a felhasználók számára,
-            ami minden szempontból elégedettséggel tölti el őket és egy olyan
-            élményt ad, amire azt mondja, hogy igen, érdemes volt ezt az oldalt
-            meglátogatni, mert megfelelő stílussal, funkciókkal és tartalmakkal
-            rendelkezett, olyanokkal, amire pont szükségem volt, hogy a napomat
-            szebbé és egyszerűbbé varázsolja és egyszerűen, könnyedén elintéztem,
-            amit szerettem volna.
-          </p>
-          <p class="p-text-shadow">
-            Munkáim a lehető legnagyobb odafigyeléssel és precizítással készültek,
-            Junior Front-End fejlesztői szinten,
-            figyelembe véve a mai felhasználói igényeket és a modern technika
-            használatával, Angular keretrendszer használatával, egyedi és
-            stíluskeretrendszereket használva, mint a Bootstrap és az Angular
-            Material. Kattints a Munkáim menüpontra a megtekintésükhöz.
-          </p>
-          <p class="p-text-shadow">
-            Tanulmányaim során megtanultam a HTML, CSS, SCSS, Javascript,
-            Bootstrap, Angular-keretrendszer precíz használatát.
-          </p>
-          <div class="img-container t-center">
-            <img class="me-img" src="assets/me-1.jpg" alt="me-1" />
+  <!-- MAIN GRID CONTAINER -->
+  <body class="container">
+    <!-- MAIN HEADER -->
+    <header class="header">
+      <!-- NAVIGATION -->
+      <nav class="nav">
+        <ul class="nav__list">
+          <li class="nav__item">
+            <div class="logo">
+              <img src="./assets/ik-logo.png" alt="Logo" class="logo-img" />
+              <span class="logo-text"
+                >Istvan <br />
+                Kalmar</span
+              >
+            </div>
+          </li>
+          <!-- HAMBURGER MENU ICON -->
+          <li class="nav__menu">
+            <a href="#" class="nav__menu-line"></a>
+          </li>
+          <!-- HAMBURGER MENU ICON END -->
+          <li data-active="true" class="nav__item">
+            <a class="nav__link" href="#about-me" data-i18n="about-me"></a>
+          </li>
+          <li class="nav__item">
+            <a
+              class="nav__link"
+              href="#projects-cards"
+              data-i18n="projects"
+            ></a>
+          </li>
+          <li class="nav__item">
+            <a class="nav__link" href="#" data-i18n="skills"></a>
+          </li>
+          <li class="nav__item">
+            <a class="nav__link" href="#" data-i18n="studies"></a>
+          </li>
+          <li class="nav__item">
+            <a class="nav__link" data-i18n="contact"></a>
+          </li>
+          <li class="nav__item">
+            <button class="btn btn--primary lang-btn" href="#">HU/EN</button>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <!-- MAIN HEADER END -->
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="content">
+      <!-- ABOUT SECTION START -->
+      <section class="about">
+        <!-- ABOUT DETAILS -->
+        <div class="about__details">
+          <h2 data-i18n="header-1" class="header-2 about__name">
+            Istvan Kalmar
+          </h2>
+          <p class="about__description" data-i18n="about-me-text"></p>
+          <div class="about__icons">
+            <svg class="about__icons--1">
+              <use
+                xlink:href="dist/sprites/code-languages-sprite.svg#icon-angular"
+              ></use>
+            </svg>
+            <svg class="about__icons--1">
+              <use
+                xlink:href="dist/sprites/code-languages-sprite.svg#icon-typescript"
+              ></use>
+            </svg>
+            <svg class="about__icons--1">
+              <use
+                xlink:href="dist/sprites/code-languages-sprite.svg#icon-redux"
+              ></use>
+            </svg>
+            <svg class="about__icons--1">
+              <use
+                xlink:href="dist/sprites/code-languages-sprite.svg#icon-node-dot-js"
+              ></use>
+            </svg>
+            <svg class="about__icons--1">
+              <use
+                xlink:href="dist/sprites/code-languages-sprite.svg#icon-ionic"
+              ></use>
+            </svg>
+            <svg class="about__icons--1">
+              <use
+                xlink:href="dist/sprites/code-languages-sprite.svg#icon-bootstrap"
+              ></use>
+            </svg>
+          </div>
+          <div class="about__works-cv">
+            <button class="btn btn--secondary btn-icon-btn btn-open-popup">
+              <svg class="btn-icon">
+                <use xlink:href="dist/sprites/sprite-2.svg#icon-shopping-bag"></use>
+              </svg>
+              <span class="btn-visible" data-i18n="works">Works</span>
+              <span data-i18n="works" class="btn-invisible">Works</span>
+            </button>
+            <a
+              href="./assets/CV/Istvan_Kalmar_CV.pdf"
+              download
+              class="btn btn--light btn-icon-btn"
+            >
+              <svg class="btn-icon">
+                <use xlink:href="dist/sprites/sprite-2.svg#icon-download"></use>
+              </svg>
+              <span data-i18n="download-cv">Download CV</span>
+            </a>
           </div>
         </div>
-      </div> 
+        <!-- ABOUT DETAILS END -->
+        <!-- ABOUT IMAGE START -->
+        <div class="about__img">
+          <div class="about__img-wrapper">
+            <img class="portfolio-img" src="./assets/me-1.jpg" alt="Istvan" />
+          </div>
+        </div>
+        <!-- ABOUT IMAGE END -->
+        <!-- ABOUT CARDS START -->
+        <div class="about__cards">
+          <div class="about__cards--1">
+            <div>
+              <svg class="about__cards-icon">
+                <use xlink:href="dist/sprites/sprite-2.svg#icon-shopping-bag"></use>
+              </svg>
+              <span data-i18n="open-to-work">Open to Work</span>
+            </div>
+            <span>Angular / Front-end</span>
+          </div>
+          <div class="about__cards--2">
+            <div>
+              <svg class="about__cards-icon">
+                <use xlink:href="dist/sprites/sprite-2.svg#icon-power"></use>
+              </svg>
+              <span>Focus</span>
+            </div>
+            <span data-i18n="ux-performance">UX & Performance</span>
+            <span data-i18n="clean-ui">Clean UI</span>
+          </div>
+          <div class="about__cards--3">
+            <div>
+              <svg class="about__cards-icon">
+                <use xlink:href="dist/sprites/sprite-2.svg#icon-github"></use>
+              </svg>
+              <span data-i18n="links">Links</span>
+            </div>
+            <div>
+              <svg class="about__cards-icon">
+                <use xlink:href="dist/sprites/sprite-2.svg#icon-github"></use>
+              </svg>
+              <a target="_blank" href="https://github.com/Istvan078">Github</a>
+              <svg class="about__cards-icon">
+                <use xlink:href="dist/sprites/sprite-2.svg#icon-linkedin"></use>
+              </svg>
+              <a
+                target="_blank"
+                href="https://www.linkedin.com/in/istvan-kalmar-a37975317/"
+                >LinkedIn</a
+              >
+            </div>
+          </div>
+        </div>
+        <!-- ABOUT CARDS END -->
+      </section>
+      <!-- ABOUT SECTION END -->
+    </main>
+    <!-- MAIN CONTENT CONTAINER END -->
+
+    <!-- PROJECTS SECTION START -->
+    <section class="projects">
+      <div class="projects__header">
+        <h2 class="header-2" data-i18n="projects-header">Projects</h2>
+        <div class="search">
+          <img
+            class="search__icon"
+          ></img>
+          <input class="search-input" placeholder="Search..." type="text" />
+          <select placeholder="Sort by" class="select projects__sort-by">
+            <option value="sort-by" disabled selected>Sort by</option>
+            <option value="date-newest">Date: Newest</option>
+            <option value="date-oldest">Date: Oldest</option>
+            <option value="name-a-z">Name: A-Z</option>
+            <option value="name-z-a">Name: Z-A</option>
+          </select>
+        </div>
+        <button class="btn btn--lang lang-btn">EN / HU</button>
+      </div>
+
+      <!-- SWITCH BAR START -->
+      <div class="projects__switch-bar">
+        <div class="switch-bar__view-type">
+          <svg>
+            <use
+              xlink:href="dist/sprites/projects-section.svg#icon-view-tile"
+            ></use>
+          </svg>
+          <svg>
+            <use xlink:href="dist/sprites/projects-section.svg#icon-menu"></use>
+          </svg>
+        </div>
+        <div class="switch-bar__select">
+          <span class="shown-number">3</span>
+          <select
+            name="number__select"
+            id="number__select"
+            class="number__select"
+          >
+            <option value="3">3</option>
+            <option value="3" selected>3</option>
+            <option value="6">6</option>
+            <option value="12">12</option>
+            <option value="24">24</option>
+          </select>
+          <svg class="switch-bar__arrow-left">
+            <use
+              xlink:href="dist/sprites/projects-section.svg#icon-keyboard_arrow_down"
+            ></use>
+          </svg>
+        </div>
+        <div class="switch-bar__all">
+          <span class="num-of-projects"></span>
+        </div>
+        <div class="switch-bar__arrows">
+          <svg class="switch-bar__arrow-left">
+            <use
+              xlink:href="dist/sprites/projects-section.svg#icon-keyboard_arrow_left"
+            ></use>
+          </svg>
+          <svg class="switch-bar__arrow-right">
+            <use
+              xlink:href="dist/sprites/projects-section.svg#icon-keyboard_arrow_right"
+            ></use>
+          </svg>
+        </div>
+      </div>
+      <!-- SWITCH BAR END -->
+
+      <!-- PROJECTS CARDS START -->
+      <div id="projects-cards" class="projects__cards">
+        <!-- REST OF THE CARDS COMING FROM JS -->
+        <div class="card">
+          <div class="card__header">
+            <div class="img-wrapper">
+              <img src="./assets/flame-chat-logo.png" alt="Project 1" />
+            </div>
+            <h3 class="card__title">Flame Chat</h3>
+            <span class="card__menu">...</span>
+          </div>
+          <div class="card__body">
+            <p class="card__body-text">
+              A real-time chat application built with Angular and Firebase,
+              featuring user authentication, chats, posting, and media sharing.
+            </p>
+          </div>
+          <div class="card__actions">
+            <button class="btn btn--angular btn-icon-btn">
+              <svg class="btn-icon">
+                <use
+                  xlink:href="dist/sprites/code-languages-sprite.svg#icon-angular"
+                ></use>
+              </svg>
+              Angular
+            </button>
+            <button class="btn btn--firebase btn-icon-btn">
+              <object
+                type="image/svg+xml"
+                data="./assets/SVG/firebase-icon.svg"
+                class="btn-icon"
+              ></object>
+              Firebase
+            </button>
+          </div>
+          <div class="card__footer">
+            <span class="card__footer-date">Updated 2d ago</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      &copy; 2026 Istvan Kalmar. All rights reserved.
+    </footer>
+    <!-- FOOTER END -->
+
+    <!-- POPUP -->
+    <div class="popup">
+      <div class="popup__content">
+        <button class="btn btn--secondary close-btn">X</button>
+        <h2 class="popup__header">Header</h2>
+        <div class="popup__text">Popup tartalom</div>
+      </div>
     </div>
-    <div class="img-container t-center d-none">
-      <img class="me-img" src="assets/me-1.jpg" alt="me-1" />
-    </div>
+    <!-- POPUP END -->
   </body>
 </html>

@@ -1,0 +1,28 @@
+{
+  "header-1": "Kalmár István – Front-end fejlesztő",
+  "about-me": "Rólam",
+  "projects": "Projektek",
+  "skills": "Készségek",
+  "studies": "Tanulmányok",
+  "contact": "Kapcsolat",
+  "about-me-text": "Gyors és letisztult Angular alapú webalkalmazások – fókuszban a felhasználói élmény és a teljesítmény.",
+  "works": "Munkáim",
+  "download-cv": "Önéletrajz letöltése",
+  "open-to-work": "Nyitott munkára",
+  "links": "Linkek",
+  "ux-performance": "UX & Teljesítmény",
+  "clean-ui": "Letisztult felület",
+  "projects-header": "Projektek",
+  "project-1": {
+    "header": "Flame Chat",
+    "intro": "Valós idejű csevegőalkalmazás Angular és Firebase alapokon, felhasználói hitelesítéssel, privát üzenetküldéssel.",
+    "li-1": "Valós idejű üzenetküldés Firebase Realtime Database segítségével",
+    "li-2": "Felhasználói hitelesítés Firebase Authentication használatával",
+    "li-3": "Reszponzív dizájn a zökkenőmentes élményért különböző eszközökön",
+    "li-4": "Privát üzenetküldési funkció, hangüzenet is beleértve",
+    "li-5": "Push értesítések új üzenetekről, hogy a felhasználók mindig naprakészek legyenek",
+    "li-6": "Privát és nyilvános bejegyzések létrehozása képfeltöltési funkcióval",
+    "li-7": "Bejegyzések megosztása más felhasználók profilján és reakciók hozzáadása",
+    "tech-stack": "Technológiák: Angular, Firebase, HTML5, SCSS, TypeScript"
+  }
+}

@@ -7,6 +7,10 @@ yarn-error.log*
 firebase-debug.log*
 firebase-debug.*.log*
 
+dist
+# Parcel cache
+.parcel-cache/
+
 node_modules
 environments.js
 
