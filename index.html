@@ -44,13 +44,13 @@
             ></a>
           </li>
           <li class="nav__item">
-            <a class="nav__link" href="#" data-i18n="skills"></a>
+            <a class="nav__link" href="#skills" data-i18n="skills"></a>
           </li>
+          <!-- <li class="nav__item">
+            <a class="nav__link" href="#studies" data-i18n="studies"></a>
+          </li> -->
           <li class="nav__item">
-            <a class="nav__link" href="#" data-i18n="studies"></a>
-          </li>
-          <li class="nav__item">
-            <a class="nav__link" data-i18n="contact"></a>
+            <a class="nav__link" href="#contact" data-i18n="contact"></a>
           </li>
           <li class="nav__item">
             <button class="btn btn--primary lang-btn" href="#">HU/EN</button>
@@ -62,7 +62,7 @@
     <!-- MAIN CONTENT CONTAINER -->
     <main class="content">
       <!-- ABOUT SECTION START -->
-      <section class="about">
+      <section id="about-me" class="about">
         <!-- ABOUT DETAILS -->
         <div class="about__details">
           <h2 data-i18n="header-1" class="header-2 about__name">
@@ -282,6 +282,12 @@
               ></object>
               Firebase
             </button>
+            <button href="#demo-link" class="btn btn--demo btn-icon-btn">
+              <svg class="btn-icon">
+                <use xlink:href="dist/sprites/send-sprite.svg#icon-send"></use>
+              </svg>
+              Live Demo
+            </button>
           </div>
           <div class="card__footer">
             <span class="card__footer-date">Updated 2d ago</span>
@@ -289,6 +295,85 @@
         </div>
       </div>
     </section>
+    <!-- PROJECTS SECTION END -->
+
+    <!-- SKILLS SECTION START -->
+    <section id="skills" class="skills">
+      <h2 class="header-2 skills__header">Skills</h2>
+      <p class="paragraph skills__text">
+        Years of practice with Angular and
+        modern front-end technologies and best practices.</p>
+      <div class="card">
+        <span class="card__icon"></span>
+        <h3 class="card__header">UI / UX & Component Libraries</h3>
+        <ul class="card__list">
+          <li class="card__list-item">
+            Responsive UI / UX Design
+          </li>
+          <li class="card__list-item">
+            Angular Material, Bootstrap
+          </li>
+        </ul>
+      </div>
+      <div class="card">
+                <span class="card__icon"></span>
+        <h3 class="card__header">State Management</h3>
+        <ul class="card__list">
+          <li class="card__list-item">
+            NgRx, Redux usage and best practices
+          </li>
+          <li class="card__list-item">
+            Reactive Programming with RxJS
+          </li>
+        </ul>
+      </div>
+      <div class="card">                <span class="card__icon"></span>
+        <h3 class="card__header">Performance Optimization</h3>
+        <ul class="card__list">
+          <li class="card__list-item">
+            Speeding up Angular applications
+          </li>
+          <li class="card__list-item">
+            Lazy loading, Code splitting
+          </li>
+        </ul></div>
+      <div class="card"><span class="card__icon"></span>
+        <h3 class="card__header">Development Tools</h3>
+        <ul class="card__list">
+          <li class="card__list-item">
+            Git, GitHub
+          </li>
+          <li class="card__list-item">
+            VS Code, Automated builds
+          </li>
+        </ul></div>
+    </section>
+    <!-- SKILLS SECTION END -->
+
+    <!-- CONTACT SECTION START -->
+    <section id="contact" class="contact">
+      <h2 class="header-2 contact__header">Contact</h2>
+      <h3 class="header-3 contact__subheader">Get in touch</h3>
+      <p class="paragraph contact__text">Reply in 24 hours</p>
+      <form action="#" class="contact__form">
+        <input name="name" type="text" placeholder="Name" required />
+        <input name="email" type="email" placeholder="Email" required />
+        <textarea
+          name="message"
+          id="message"
+          rows="5"
+          placeholder="Your message"
+          required
+        ></textarea>
+        <button class="btn btn--primary btn--submit btn-icon-btn" type="submit">
+          <svg class="btn-icon">
+            <use xlink:href="dist/sprites/send-sprite.svg#icon-send"></use>
+          </svg>
+          Send Message
+        </button>
+      </form>
+    </section>
+    <!-- CONTACT SECTION END -->
 
     <!-- FOOTER -->
     <footer class="footer">

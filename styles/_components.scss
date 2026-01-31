@@ -510,6 +510,10 @@
   );
   border-bottom: 1px solid rgba($color-white, 0.42);
 
+  @media only screen and (max-width: $bp-smallest) {
+    justify-content: center;
+  }
+
   & > * {
     z-index: 1;
   }
@@ -529,6 +533,11 @@
   .header-2 {
     margin-right: auto;
     color: $color-white;
+
+    @media only screen and (max-width: $bp-smallest) {
+      margin-right: 0;
+      letter-spacing: 1rem;
+    }
   }
 
   .search {
@@ -567,6 +576,10 @@
   .btn--lang {
     margin: 0 1.6rem;
     border-radius: 1rem;
+
+    @media only screen and (max-width: $bp-smallest) {
+      display: none;
+    }
   }
 }
 
@@ -614,6 +627,7 @@
         width: 100%;
         height: 100%;
         opacity: 0;
+        // write hover for option element
       }
     }
     &__all {
@@ -805,7 +819,7 @@
       justify-self: start;
     }
     &__actions {
-      grid-column: 1 / 8;
+      grid-column: 1 / 9;
       grid-row: 3 / 4;
       display: flex;
       justify-content: flex-start;
@@ -813,6 +827,14 @@
       font-size: 2rem;
       button:hover {
         animation: pulsate 2s infinite;
+      }
+      & > * {
+        @media only screen and (max-width: $bp-medium) {
+          font-size: 1.7rem;
+        }
+        @media only screen and (max-width: $bp-smallest) {
+          font-size: 1.5rem;
+        }
       }
       .btn--angular {
         background-image: linear-gradient(
@@ -863,6 +885,14 @@
           $color-red-light
         );
       }
+      .btn--demo {
+        margin-left: auto;
+        background-image: linear-gradient(
+          to right bottom,
+          rgba($color-green-dark, 1),
+          rgba($color-green-light, 1)
+        );
+      }
     }
     &__footer {
       grid-column: 1 / 8;
@@ -872,6 +902,118 @@
       justify-content: flex-end;
       font-size: 1.6rem;
       color: $color-grey-light-2;
+    }
+  }
+}
+
+.skills {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(min-content, max-content));
+  grid-template-rows: repeat(auto-fit, minmax(2rem, max-content));
+  gap: 1rem;
+
+  &__header {
+    grid-column: 1 / -1;
+    font-size: 3.8rem;
+    font-weight: 600;
+
+    @media only screen and (max-width: $bp-smallest) {
+    }
+  }
+  &__text {
+    grid-column: 1 / -1;
+    font-size: 1.8rem;
+    line-height: 1.6;
+    color: $color-grey-dark-2;
+  }
+  .card {
+    padding: 1rem;
+    border-radius: 1rem;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+    background-image: linear-gradient(
+      to right bottom,
+      $color-white,
+      $color-grey-light-1
+    );
+    &__header {
+      font-size: 2.4rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    &__icon {
+      width: 4rem;
+      height: 4rem;
+      fill: currentColor;
+    }
+    &__list {
+      list-style: none;
+      display: grid;
+      gap: 1rem;
+      font-size: 1.8rem;
+      color: $color-grey-dark-2;
+
+      &-item {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+
+        &::before {
+          content: "✔";
+          color: $color-green-dark;
+          font-size: 2rem;
+        }
+      }
+    }
+  }
+}
+// SKILLS SECTION END
+
+// CONTACT SECTION
+.contact {
+  display: grid;
+  padding: 0 1rem;
+  &__header {
+    font-size: 3.4rem;
+    color: $color-primary-dark;
+  }
+  &__subheader {
+    font-size: 2.4rem;
+
+    @media only screen and (max-width: $bp-medium) {
+      display: none;
+    }
+  }
+  &__text {
+    font-size: 2rem;
+    line-height: 1.8;
+    color: $color-grey-dark-2;
+  }
+  &__form {
+    display: grid;
+    row-gap: 1rem;
+
+    input {
+      font-size: 2rem;
+      padding: 1rem;
+
+      &:focus {
+        outline: 2px solid $color-purple-dark;
+      }
+    }
+
+    textarea {
+      font-size: 2rem;
+      padding: 1rem;
+      border: none;
+
+      &:focus {
+        outline: 2px solid $color-purple-dark;
+      }
+    }
+    .btn--submit {
+      font-size: 2rem;
+      width: max-content;
+      padding: 1rem 3rem;
     }
   }
 }

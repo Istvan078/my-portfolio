@@ -12,6 +12,7 @@ const sprites = {
   codeLangs: "/sprites/code-languages-sprite.svg",
   sprite1: "/sprites/sprite-1.svg",
   sprite2: "/sprites/sprite-2.svg",
+  sendSprite: "/sprites/send-sprite.svg",
 };
 
 const fileIcons = {
@@ -27,36 +28,29 @@ const fileIcons = {
 const state = {};
 
 state.dictionary = { en, hu };
+state.demoIcon = `${sprites.sendSprite}#icon-send`;
 
 // state.project = new Project({
 // });
 
 // ADD NEW PROJECT TO FIRESTORE
 async function addProject() {
-  await firestoreService.addProject({ ...state.project });
+  await firestoreService.addDataToStore({ ...state.project }, "projects");
 }
 
 // GET ALL PROJECTS FROM FIRESTORE
 async function getAllProjects() {
-  state.projects = await firestoreService.getAllProjects();
+  state.projects = await firestoreService.getDataFromStore("projects");
   state.projects = state.projects.map((p) => ({
     ...p,
     iconsResolved: (p.icons || []).map(resolveIcon),
   }));
+  state.projects = utils.sort("date-newest", {
+    arr: state.projects,
+    compProp: "modifiedAt",
+    lang: state.lang,
+  });
 }
-
-// RESOLVE ICON URLS
-const resolveIcon = (icon) => {
-  if (!icon) return "";
-  if (typeof icon === "string") return icon; // ha van régi adatod még
-  if (icon.type === "sprite") {
-    return `${sprites[icon.sprite]}#${icon.symbol}`;
-  }
-  if (icon.type === "svg") {
-    return fileIcons[icon.key] || "";
-  }
-  return "";
-};
 
 // UPDATE PROJECTS IN FIRESTORE
 async function updateProject(id) {
@@ -97,6 +91,34 @@ async function uploadProjectImage(locFilePath, proj) {
   console.log(downloadURL, "File uploaded successfully.");
   return downloadURL;
 }
+
+// ADD MESSAGE FROM GET IN TOUCH FORM TO FIRESTORE
+const addMessage = (message) => {
+  firestoreService.addDataToStore({ ...message }, "messages");
+};
+
+// GET MESSAGES FROM FIRESTORE
+const getMessages = async () => {
+  const messages = await firestoreService.getDataFromStore("messages");
+  if (messages?.length) {
+    state.admin = {};
+    state.admin.messages = messages;
+  }
+  return messages;
+};
+
+// RESOLVE ICON URLS
+const resolveIcon = (icon) => {
+  if (!icon) return "";
+  if (typeof icon === "string") return icon; // ha van régi adatod még
+  if (icon.type === "sprite") {
+    return `${sprites[icon.sprite]}#${icon.symbol}`;
+  }
+  if (icon.type === "svg") {
+    return fileIcons[icon.key] || "";
+  }
+  return "";
+};
 
 const selectedLang = localStorage.getItem("lang");
 if (selectedLang) state.lang = selectedLang;
@@ -190,6 +212,8 @@ const model = {
   sort,
   search,
   loadProjects: getAllProjects,
+  addMessage,
+  getMessages,
 };
 
 export default model;

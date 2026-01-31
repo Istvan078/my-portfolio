@@ -2,20 +2,23 @@ import model from "../model/model.js";
 import { MainView } from "../view/main-view.js";
 import { PopupView } from "../view/popup-view.js";
 import { ProjectsView } from "../view/projects-view.js";
+import { SkillsContactView } from "../view/skills-contact-view.js";
 const mainView = new MainView();
 const popupView = new PopupView();
 const projectsView = new ProjectsView();
+const skillsContactView = new SkillsContactView();
 
 // INITIALIZATION
 const init = async () => {
   await controlProjects();
+  controlMessageHandler();
   controlMainView();
   controlChangeLangHandler();
   controlOpenPopup();
   controlNavLinks();
   controlHamburgerMenu();
-  controlShowMoreInfo();
   controlChooseShownAmount();
+  controlShowMoreInfo();
   controlSortProjects();
   controlSearchProjects();
   console.log(`***App initialized***`);
@@ -32,6 +35,7 @@ const controlMainView = () => {
 //////////////// MODEL-VIEW CONTROLLER ////////////////
 async function controlProjects() {
   await model.loadProjects();
+  model.getMessages();
 }
 
 //////////////// EVENT HANDLERS ////////////////
@@ -39,6 +43,11 @@ async function controlProjects() {
 // LANGUAGE CHANGE HANDLER
 const controlChangeLangHandler = () => {
   mainView.addHandlerNewLang(model.changeLang);
+};
+
+// MESSAGE FORM SUBMISSION HANDLER
+const controlMessageHandler = () => {
+  skillsContactView.addHandlerContactFormSubmit(model.addMessage);
 };
 
 // OPEN POPUP HANDLER
@@ -64,9 +73,10 @@ const controlHamburgerMenu = () => {
 
 // SHOW MORE INFO BUTTON
 const controlShowMoreInfo = () => {
-  mainView.addClickHandler(
-    mainView.showMoreInfo,
+  projectsView.addHandlerRender(
+    projectsView.showMoreInfo.bind(projectsView),
     ".btn--show-more-info",
+    "click",
     true,
     true,
   );

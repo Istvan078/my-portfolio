@@ -96,7 +96,7 @@ body {
 // BODY STYLES (BODY IS THE MAIN CONTAINER)
 .container {
   display: grid;
-  grid-template-rows: 6rem calc(100vh - 6rem) 100vh 6rem;
+  grid-template-rows: 6rem calc(100vh - 6rem) repeat(3, max-content);
   grid-template-columns:
     [full-start] minmax(6rem, 1fr) [center-start] repeat(
       8,
@@ -105,14 +105,13 @@ body {
     [center-end]
     minmax(6rem, 1fr) [full-end];
 
+  @media only screen and (max-width: $bp-medium) {
+    grid-template-rows: repeat(auto-fit, minmax(15rem, 1fr));
+  }
   @media only screen and (max-width: $bp-small) {
-    grid-template-rows: 12rem calc(100vh - 10rem) repeat(2, max-content);
+    grid-template-rows: 12rem calc(100vh - 10rem) repeat(3, max-content);
     &:has(.header .nav .nav__list--open) {
       grid-template-rows: max-content;
     }
-  }
-
-  @media only screen and (max-width: $bp-medium) {
-    grid-template-rows: repeat(auto-fit, minmax(15rem, 1fr));
   }
 }

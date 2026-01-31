@@ -13,30 +13,59 @@ const db = getFirestore(app);
 
 ///////////////////// FIRESTORE SERVICE ////////////////////////
 class FirestoreService {
-  async addProject(project) {
+  // Add new project
+  // async addProject(project) {
+  //   try {
+  //     const docRef = await addDoc(collection(db, "projects"), project);
+  //     await updateDoc(docRef, { id: docRef.id });
+  //   } catch (e) {
+  //     console.error("Error adding document: ", e);
+  //   }
+  // }
+
+  // Add Data to Store
+  async addDataToStore(data, path) {
     try {
-      const docRef = await addDoc(collection(db, "projects"), project);
+      const docRef = await addDoc(collection(db, path), data);
       await updateDoc(docRef, { id: docRef.id });
     } catch (e) {
       console.error("Error adding document: ", e);
     }
   }
 
-  async getAllProjects() {
+  async getDataFromStore(path) {
     try {
-      const querySnapshot = await getDocs(collection(db, "projects"));
-      const projects = [];
+      const querySnapshot = await getDocs(collection(db, path));
+      const items = [];
       querySnapshot.forEach((doc) => {
         const data = doc.data();
-        data.timeString = new Date(data.modifiedAt).toDateString();
-        projects.push(data);
+        if (data.modifiedAt)
+          data.timeString = new Date(data.modifiedAt).toDateString();
+        items.push(data);
       });
-      return projects;
+      return items;
     } catch (e) {
       console.error("Error getting documents: ", e);
     }
   }
 
+  // Get all projects
+  // async getAllProjects() {
+  //   try {
+  //     const querySnapshot = await getDocs(collection(db, "projects"));
+  //     const projects = [];
+  //     querySnapshot.forEach((doc) => {
+  //       const data = doc.data();
+  //       data.timeString = new Date(data.modifiedAt).toDateString();
+  //       projects.push(data);
+  //     });
+  //     return projects;
+  //   } catch (e) {
+  //     console.error("Error getting documents: ", e);
+  //   }
+  // }
+
+  // Get single project by ID
   async getProject(projectId) {
     try {
       const projectRef = doc(db, "projects", projectId);
@@ -51,6 +80,7 @@ class FirestoreService {
     }
   }
 
+  // Update project by ID
   async updateProject(projectId, project) {
     try {
       const projectRef = doc(db, "projects", projectId);

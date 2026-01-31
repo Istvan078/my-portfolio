@@ -10,6 +10,7 @@ export class ProjectsView {
       this.renderProjectCards(this.state.searchedProjects);
     else this.renderProjectCards(this.state.projects);
     this.chooseAndInitShownAmount();
+    this.viewShowMoreInfo();
   }
 
   // RENDER PROJECT CARDS BASED ON STATE
@@ -86,6 +87,15 @@ export class ProjectsView {
               }
               ${proj.technologies?.[1]}
             </button>
+            ${proj.demoLink
+              ? `
+            <a target="_blank" href="${proj.demoLink}" class="btn btn--demo btn-icon-btn">
+              <svg class="btn-icon">
+                <use xlink:href=${this.state.demoIcon}></use>
+              </svg>
+              Live Demo
+            </a>
+            ` : ""  }
           </div>
           `
               : ""
@@ -104,15 +114,31 @@ export class ProjectsView {
     return markup;
   }
 
-  addHandlerRender(handler, selector, eventType) {
-    const element = this._parentElement.querySelector(selector);
+  addHandlerRender(
+    handler,
+    selector,
+    eventType,
+    multiple = false,
+    noReRender = false,
+  ) {
+    const element = multiple
+      ? this._parentElement.querySelectorAll(selector)
+      : this._parentElement.querySelector(selector);
     const listener = (e) => {
       handler(e.currentTarget);
-      this.render();
+      if (!noReRender) this.render();
     };
-    element.addEventListener(eventType, listener);
+    if (multiple) {
+      element?.forEach((el) => el.addEventListener(eventType, listener));
+    } else {
+      element?.addEventListener(eventType, listener);
+    }
     return () => {
-      element.removeEventListener(eventType, listener);
+      if (multiple) {
+        element?.forEach((el) => el.removeEventListener(eventType, listener));
+      } else {
+        element?.removeEventListener(eventType, listener);
+      }
     };
   }
 
@@ -135,5 +161,34 @@ export class ProjectsView {
       if (i > selectElement.value - 1) card.style.display = "none";
       else card.style.display = "grid";
     });
+  }
+
+  // SHOW "SHOW MORE INFO" BUTTON IF TEXT OVERFLOWS
+  viewShowMoreInfo() {
+    const cardBody = this._parentElement.querySelectorAll(".card__body");
+    cardBody.forEach((cardB, i) => {
+      const textElement = cardB.querySelector("p");
+      textElement.dataset.ofid = i + 1;
+      // Check if text overflows
+      // scrollHeight means total height of the content, clientHeight means visible height
+      if (textElement?.scrollHeight - 10 > textElement?.clientHeight) {
+        const btn = document.createElement("button");
+        btn.dataset.ofid = i + 1;
+        btn.classList.add("btn--show-more-info", "btn");
+        btn.textContent = "Show more...";
+        cardB.appendChild(btn);
+      }
+    });
+  }
+
+  // RENDER MORE INFO ON CLICK
+  showMoreInfo(clickedBtn) {
+    const cardBody = clickedBtn.closest(".card__body");
+    const textElement = cardBody.children[0];
+    if (clickedBtn.dataset.ofid === textElement.dataset.ofid) {
+      textElement.style.overflow = "visible";
+      clickedBtn.style.display = "none";
+      textElement.style.marginBottom = "2rem";
+    }
   }
 }
